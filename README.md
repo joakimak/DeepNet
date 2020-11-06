@@ -8,7 +8,7 @@ A neural network program in C++ which supports five different execution policies
 * **DynamicParallel** - CPU Parallel execution with a dynamically sized thread pool.
 * **Heterogeneous** - GPU Parallel execution. Appropriate grid- and block sizes are set automatically by the program.
 
-Since ~97% of the total makespan is spent in GEMM/dot, parallelization of arithmetic operations have been left out. 
+Since ~97% of the total makespan is spent in GEMM/dot, parallelization of arithmetic operations has been left out. 
 
 ## Requirements
 
