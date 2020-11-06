@@ -171,7 +171,7 @@ Matrix<float> dot_device(const Matrix<float>& a, const Matrix<float>& b)
     Device_matrix<float> dev_b {b};
     Device_matrix<float> dev_c {a.rows(), b.cols()};
 
-    constexpr int bsz {2};
+    constexpr int bsz {16};
     dim3 threads(bsz, bsz);
     dim3 blocks(
         static_cast<int>(ceil(static_cast<float>(b.cols()) / bsz)),

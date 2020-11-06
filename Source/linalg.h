@@ -1,17 +1,19 @@
 #ifndef LINALG_H
 #define LINALG_H
 
-#include "matrix.h"
 #include <omp.h>
-
 #include <cmath>
 #include <thread>
 #include <algorithm>
 
+#include "matrix.h"
+
 using std::vector;
 
 extern "C"
-Linalg::Matrix<float> dot_device(const Linalg::Matrix<float>& a, const Linalg::Matrix<float>& b);
+Linalg::Matrix<float> dot_device(
+    const Linalg::Matrix<float>& a,
+    const Linalg::Matrix<float>& b);
 
 namespace Linalg
 {
@@ -20,29 +22,29 @@ namespace Linalg
 namespace Policy
 {
 
-struct Sequential{};
+struct P{};
 
-struct BlockTiled
+struct Sequential : public P{};
+
+struct BlockTiled : public P
 {
     BlockTiled(int bsz) : block_size{bsz}{}
     int block_size;
 };
 
-struct StaticParallel
+struct StaticParallel : public P
 {
     StaticParallel(int n) : n_threads{n}{}
     int n_threads;
 };
 
-struct DynamicParallel
+struct DynamicParallel : public P
 {
     DynamicParallel(int n) : n_dynamic_threads{n}{}
     int n_dynamic_threads;
 };
 
-struct Distributed{};
-
-struct Heterogeneous{};
+struct Heterogeneous : public P{};
 
 }
 
@@ -294,10 +296,7 @@ vector<Matrix<T>> conv(
     return res;
 }
 
-
-
 }
-
 
 
 #endif // LINALG_H

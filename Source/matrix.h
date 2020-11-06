@@ -56,14 +56,14 @@ public:
 
     bool operator==(const Matrix& other);
 
-    Matrix operator+(const Matrix& other);
-    Matrix operator-(const Matrix& other);
-    Matrix operator*(const Matrix& other);
-    Matrix operator/(const Matrix& other);
-    Matrix operator+(value_type v);
-    Matrix operator-(value_type v);
-    Matrix operator*(value_type v);
-    Matrix operator/(value_type v);
+    Matrix operator+(const Matrix& other) const;
+    Matrix operator-(const Matrix& other) const;
+    Matrix operator*(const Matrix& other) const;
+    Matrix operator/(const Matrix& other) const;
+    Matrix operator+(value_type v) const;
+    Matrix operator-(value_type v) const;
+    Matrix operator*(value_type v) const;
+    Matrix operator/(value_type v) const;
 
     Matrix& operator+=(const Matrix& other);
     Matrix& operator-=(const Matrix& other);
@@ -93,7 +93,7 @@ private:
     size_t cols_;
 };
 
-// ========== Definitions ==========
+// ================== Matrix::implementation ==================
 
 template<typename T>
 Matrix<T>& Matrix<T>::operator=(const Matrix<T>& other)
@@ -151,28 +151,28 @@ std::istream& operator>>(std::istream& is, Matrix<V>& m)
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator+(const Matrix& other)
+Matrix<T> Matrix<T>::operator+(const Matrix& other) const
 {
     assert(rows() == other.rows() && cols() == other.cols());
     return Matrix<T>{*this} += other;
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator-(const Matrix& other)
+Matrix<T> Matrix<T>::operator-(const Matrix& other) const
 {
     assert(rows() == other.rows() && cols() == other.cols());
     return Matrix<T>{*this} -= other;
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator*(const Matrix& other)
+Matrix<T> Matrix<T>::operator*(const Matrix& other) const
 {
     assert(rows() == other.rows() && cols() == other.cols());
     return Matrix<T>{*this} *= other;
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator/(const Matrix& other)
+Matrix<T> Matrix<T>::operator/(const Matrix& other) const
 {
     assert(rows() == other.rows() && cols() == other.cols());
     return Matrix<T>{*this} /= other;
@@ -227,25 +227,25 @@ Matrix<T>& Matrix<T>::operator/=(const Matrix& other)
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator+(value_type v)
+Matrix<T> Matrix<T>::operator+(value_type v) const
 {
     return Matrix<T>{*this} += v;
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator-(value_type v)
+Matrix<T> Matrix<T>::operator-(value_type v) const
 {
     return Matrix<T>{*this} -= v;
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator*(value_type v)
+Matrix<T> Matrix<T>::operator*(value_type v) const
 {
     return Matrix<T>{*this} *= v;
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator/(value_type v)
+Matrix<T> Matrix<T>::operator/(value_type v) const
 {
     return Matrix<T>{*this} /= v;
 }

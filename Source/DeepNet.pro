@@ -6,13 +6,14 @@ CONFIG -= qt
 SOURCES += main.cpp
 
 HEADERS += \
-    deep_core.h \
     timer.h \
     matrix.h \
     linalg.h \
     data.h \
     rand_utils.h \
-    nnetwork.h
+    nnetwork.h \
+    operations.h \
+    evaluation.h
 
 OTHER_FILES += ./kernel.cu
 CUDA_SOURCES += ./kernel.cu

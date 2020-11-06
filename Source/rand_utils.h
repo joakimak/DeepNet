@@ -22,7 +22,6 @@ int random<int>(int lo, int hi)
     return std::uniform_int_distribution<>(lo, hi)(engine);
 }
 
-
 template<typename M>
 typename std::enable_if<
 std::is_base_of<Linalg::Matrix<typename M::value_type>, M>::value, M>::type
