@@ -32,6 +32,4 @@ For a dense, 3-layer network with layer sizes of (128, 64, 10) trained for MNIST
 * **DynamicParallel** - 8 ms
 * **Heterogeneous** - 3 ms
 
-Convergence to ~92% accuracy takes around 2,000 epochs with this network structure.
-
 
