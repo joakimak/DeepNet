@@ -22,7 +22,7 @@ A build script for QMake is included in the repo.
 
 ## Performance
 
-The following benchmarks were obtained using gcc with the -O3 optimizer.
+The following benchmarks were obtained using gcc with the -O3 optimization flag.
 
 For a dense, 3-layer network with layer sizes of (128, 64, 10) trained for MNIST digit classification, I observed the following runtimes per mini-batch epoch of 256 samples:
 
